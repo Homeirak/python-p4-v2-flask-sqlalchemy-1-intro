@@ -22,22 +22,9 @@ metadata = MetaData()
 db = SQLAlchemy(metadata=metadata)
 
 # define a model class by inheriting from db.Model.
-# Defines a model class named Pet, which will represent the pets table in the database.
-# It inherits from db.Model, so SQLAlchemy knows to treat this as a table.
 class Pet(db.Model):
+    __tablename__='pets'
 
-    #  Explicitly sets the name of the table in the database as "pets".
-    # If you didn’t include this, SQLAlchemy would default to using "pet" (the class name, lowercase).
-    __tablename__ = 'pets'
-
-    # Defines the following:
-    # A column named id, of type Integer, and marks it as the primary key.
-    # This uniquely identifies each pet.
     id = db.Column(db.Integer, primary_key=True)
-
-    # A column named name, of type String.
-    # This stores the pet's name.
     name = db.Column(db.String)
-
-    # Defines a column named species, also of type String. This stores the type of animal (e.g., dog, cat, etc.).
     species = db.Column(db.String)
